@@ -29,6 +29,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+summary {
+  list-style-type: none; /* Firefox */
+}
+
+summary::-webkit-details-marker {
+  display: none; /* Chrome */
+}
+
 body {
 	line-height: 1;
 }
