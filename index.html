@@ -22,20 +22,35 @@
 <!-- Introduction -->
         <section class="banner style1 orient-left content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-right">
             <div class="content">
-              <h1>Hi! I'm Dr. Samuel Ross Meehan</h1>
-              <p class="major">... but please call me Sam.</p>
-              <ul class="actions stacked">
-                <li><a href="#who" class="button big wide smooth-scroll-middle primary fit">Who am I?</a></li>
-                <li><a href="#path" class="button big wide smooth-scroll-middle primary fit">How did I get here?</a></li>
-                <li><a href="#what" class="button big wide smooth-scroll-middle primary fit">What do I do?</a></li>
-                <li><a href="#help" class="button big wide smooth-scroll-middle primary fit">How I can help</a></li>
-                <li><a href="#whatelse" class="button big wide smooth-scroll-middle primary fit">What <em>else</em> do I do?</a></li>
-                <li><a href="#contact" class="button big wide smooth-scroll-middle primary fit">Contact</a></li>
-              </ul>
-            </div>
-            <div class="image">
-              <img src="images/profile3.jpg" alt="" />
-            </div>
+              <h1>Hi! I'm Dr. Sam</h1>          
+
+              
+              <div style="display: flex; justify-content: space-around">
+              <div><h2><a href="#science" class="smooth-scroll-middle">science ...</a></h2></div>
+              <div><h2><a href="#education" class="smooth-scroll-middle">teaching ...</a></h2></div>
+              <div><h2><a href="#community" class="smooth-scroll-middle">people ...</a></h2></div>
+              </div>
+
+
+              <p>
+              <h3>Don't know me?</h3> 
+              Take five minutes, scroll down and learn <a href="#who" class="smooth-scroll-middle">who I am</a>.
+              Hey, maybe <a href="#what" class="smooth-scroll-middle">my interests and talents</a> will jive with yours and <a href="#who" class="smooth-scroll-middle">we could work together</a>.
+              </p>
+              
+              <p>
+              <h3>Know me?</h3> 
+              Maybe we just me, we work together or have been friends for years.  But who was <a href="#wayback" class="smooth-scroll-middle">my third grade teacher</a> and <a href="#hobbies" class="smooth-scroll-middle">what do I do beyond my profession</a>?
+              </p>
+              
+              <p>
+              <em>This is something like a curriculum vitae on steroids.  If that is really what you are trying to find, <a href="meehan_CurriculumVitae.pdf">here it is</a>, but it may be more insightful to wander around here for a bit.</em> 
+              </p>
+                        
+              </div>
+              <div class="image">
+                <img src="images/profile3.jpg" alt="" />
+              </div>
           </section>
 
 <!-- Who am I? -->
@@ -53,17 +68,18 @@
             <a href="#people" class="smooth-scroll-middle primary fit">"people person"</a>,
             <a href="#talk"   class="smooth-scroll-middle primary fit">"professional chit-chatter"</a>
             </p>
+          <div class="index align-center">
           </div>
           
           
         <section class="spotlight style2 orient-right content-align-left image-position-center onscroll-image-fade-in" id="tech">
           <div class="content">
-            <h2>Technical Handyman</h2>
-            <h4><em>Big data and problem solving</em></h4>
-            <p>I have a PhD in particle physics which I pursued out of an intrinsic curiosity to understand the fundamental laws of nature.  During the course of 12 years of study and post-doctoral research, I developed the ability to manipulate and understand big data sets, to construct and operate high speed electronics, and draw meaningful insights into the natural world.  I enjoy asking questions, defining ill-posed problems, and finding solutions.  I relish the excitement of discovery - both when I learn a new skill or when I can help bring to light a new principle of the universe.</p>
+            <h2>Thinker and Technical Handyman</h2>
+            <h4><em>Problem solving and big data</em></h4>
+            <p>I have a PhD in particle physics which I pursued out of an intrinsic curiosity to understand the fundamental laws of nature.  During the course of 12 years of study and post-doctoral research, I developed the ability to manipulate and understand big data sets, to construct and operate high speed electronics, and draw meaningful insights into the natural world.  I enjoy asking questions, bringing definition to ill-posed problems, and finding solutions.  I relish the excitement of learning and discovery.  But most of all, I enjoy sharing this with others.</p>
           </div>
           <div class="image">
-            <img src="images/profile.jpg" alt="" />
+            <img src="images/science5_cropped.jpg" alt="" />
           </div>
         </section>
         
@@ -71,13 +87,14 @@
           <div class="content">
             <h2>People Person</h2>
             <h4><em>Dynamic leader and mentor</em></h4>
-            <p>In tandem, I have cultivated a set of “soft skills” resulting from the environment in which my work took place.  Particle physics is a domain which involves large international collaborations, is both cooperative and competitive, and inherently relies on individuals learning (and teaching) while pursuing their researching.  As such, I have developed strong sense of time management and group leadership skills.  I know how to prioritize my work to pursue multiple projects in parallel and guide a team to success.  I know how to communicate and how to facilitate communication both within a team and I know the value of mentoring colleagues and cultivating talent.</p>
+            <p>In tandem, I have cultivated a set of “soft skills” resulting from the environment in which my work took place that enable me to better serve others.  Particle physics is a domain which involves large international collaborations, is both cooperative and competitive, and inherently relies on individuals learning (and teaching) while pursuing their own research.  As such, I have developed strong sense of time management and group leadership.  I know how to prioritize my work to pursue multiple projects in parallel and guide a team to success.  I know how to communicate and how to facilitate communication within a team and I know the value of mentoring colleagues and cultivating talent.</p>
           </div>
           <div class="image">
-            <img src="images/profile.jpg" alt="" />
+            <img src="images/community6.jpg" alt="" />
           </div>
         </section>
       
+<!-- 
         <section class="spotlight style2 orient-right content-align-left image-position-center onscroll-image-fade-in" id="talk">
             <div class="content">
               <h2>Professional Chit-chatter</h2>
@@ -88,8 +105,10 @@
               <img src="images/profile.jpg" alt="" />
             </div>
           </section>
+ -->
           
-                    
+                    </div>
+                    </div>
         </section>
       
 <!-- Education -->
@@ -124,8 +143,10 @@
               <p>Ph.D. in Experimental Particle Physics</p>
             </header>
             <br>
-            <details>             
-              <summary><b><em><span class="button large fit default">Take a ride in my "way back machine" ...</span></em></b></summary>
+            <details id="wayback">             
+              <summary><b><em><span class="button large fit primary">Take a ride in my "way back machine" ...</span></em></b></summary>
+              <br>
+              <br>
               <header>
                 <h3>University of New Hampshire <em>(2005-2009)</em></h3>
                 <p>B.Sc. Physics and Applied Mathematics (Summa cum laude)</p>
@@ -175,233 +196,21 @@
           <div class="index align-center">
           </div>
           
-        <section class="spotlight style2 orient-right content-align-left image-position-center onscroll-image-fade-in" id="tech">
-          <div class="content">
-            <h2>Technical Handyman</h2>
-            <h4><em>Big data and problem solving</em></h4>
-            <p>I have a PhD in particle physics which I pursued out of an intrinsic curiosity to understand the fundamental laws of nature.  During the course of 12 years of study and post-doctoral research, I developed the ability to manipulate and understand big data sets, to construct and operate high speed electronics, and draw meaningful insights into the natural world.  I enjoy asking questions, defining ill-posed problems, and finding solutions.  I relish the excitement of discovery - both when I learn a new skill or when I can help bring to light a new principle of the universe.</p>
-          </div>
-          <div class="image">
-            <img src="images/profile.jpg" alt="" />
-          </div>
-        </section>
-
-          <!-- Nitty Gritty -->
-          <details>
-          <summary><b><em><span class="button large fit default">Want to see more of the science I've done?</span></em></b></summary>
-          <section>
-            <div class="index align-left">
-              
-              <!-- organization/position -->
-              <section>
-                <header>
-                  <h3>ATLAS Experimental Collaboration @ CERN</h3>
-                  <h4><em>2008-Present</em></h4>
-                </header>
-                <div class="content">
-                  <dl>
-                    <dt>Dark Matter and New Physics</dt>
-                    <dd>
-                    <p>I search for new particles and forces (e.g. dark matter) not currently described in the paradigm of particle physics by studying the data collected by the experiment. This requires translating physical intuition and an appreciation for the abilities (and limitations) of a physical detector into performant computer programs.  These programs are integrated with the millions of lines of code within the collaboration’s analysis framework, and used to process large datasets using a grid of cloud computing resources distributed around the world. </p>
-                    </dd>
-                    <dt>Automated Computing</dt>
-                    <dd>
-                    <p>I work to automate the data analysis that we do by developing declarative, pipelined workflows.  This not only allows for the same code to be used multiple times in the context of physics searches to make new and interesting statements about hypothetical scenarios, but can also take the busy work out of standard (but complex!) detector calibration procedures.  This  improves efficiency of analysis turnaround and frees up the time of others in the collaboration to think more creatively. </p>
-                    </dd>
-                    <dt>Hadronic Jets</dt>
-                    <dd>
-                    <p>I spend a considerable amount of time thinking about “hadronic jets”, which are collimated sprays of dozens of particles.  The way these particles orient themselves with respect to each other, their “topology”, can tell you a lot about the type of particle from which they originated at the collision point in a bubble whose radius is about one femtometer (one one thousandth of a millionth the width of a human hair).  Understanding their behavior requires not only physical intuition and programming but often times the use of machine learning. </p>
-                    </dd>
-                    <dt>Leadership and Management</dt>
-                    <dd>
-                    <p>My talents and ability to perform good research while helping others succeed has been recognized multiple times within the collaboration.  I have been elected multiple times to lead groups ranging from a few students to upwards of a hundred collaborators on topics including (i) dark matter searches, (ii) hadronic jet tagging team, and (iii) Higgs boson tagging.</p>
-                    </dd>
-                  </dl>
-                </div>
-              </section>
-              
-              <!-- organization/position -->
-              <section>
-                <header>
-                  <h3>FASER Experimental Collaboration @ CERN</h3>
-                  <h4><em>2019-Present</em></h4>
-                </header>
-                <div class="content">
-                  <dl>
-                    <dt>Ultra Long-lived Particles</dt>
-                    <dd>
-                      <p>Perform searches for ultra-long-lived particles produced in proton proton collisions at the LHC in a region of the accelerator that is left uncovered by the ATLAS experiment - down the beamline. </p>
-                    </dd>
-                    <dt>Electronics and Data Acquisition</dt>
-                    <dd>
-                      <p>I am one of the core designers and developers of the data acquisition system, specifically the portion responsible for reading out the trigger and timing scintillators and the calorimeter signals. It is this detector readout that bears the sole responsibility of identifying interesting signals for which the data from the entire suite of detectors will be recorded. [FASERExp, faser/daq, faser-docs]</p>
-                    </dd>
-                  </dl>
-                </div>
-              </section>
-              
-              <!-- organization/position -->
-              <section>
-                <header>
-                  <h3>Large Area Picosecond Timing Detectors</h3>
-                  <h4><em>2009</em></h4>
-                </header>
-                <div class="content">
-                  <dl>
-                    <dt>Faster Detectors</dt>
-                    <dd>
-                      <p>Novel development of detectors is critical to furthering particle physics and creating technologies that can be transferred to have a broader impact in society (e.g. medical applications).  Timing resolution (i.e. how accurately a detector can identify *when* something occurs) is one of these improvements.  Typical detectors have an accuracy of of a nanosecond (a thousandth of a millionth of a second).  In this project, we wanted to do a factor of one thousand better.</p>
-                    </dd>
-                    <dt>Microchip Design</dt>
-                    <dd>
-                      <p>Early in my graduate career, I contributed to the design of first generation ASIC for front-end of large-area photo detectors with picosecond timing resolution by designing the low level circuitry for the readout microchip of the detector. [PSec website, PaperRef]</p>
-                    </dd>
-                  </dl>
-                </div>
-              </section>
-              
-              <!-- organization/position -->
-              <section>
-                <header>
-                  <h3>Sleeping Worms</h3>
-                  <h4><em>2009-2010</em></h4>
-                </header>
-                <div class="content">
-                  <dl>
-                    <dt>Sleep Science</dt>
-                    <dd>
-                      <p>Although there are hypotheses, no one really knows why we sleep.  However, we can study behavior analogous to the state of sleep in simple organisms, primarily the C. elegans nematode. This organism’s nervous system has about 1000 neurons and is remarkably identical from specimen to specimen.  [david byron lab chicago] </p>
-                    </dd>
-                    <dt>Surgical Lasers</dt>
-                    <dd>
-                      <p>I designed and constructed a pulsed laser system to perform non-invasive dissection of the C. elegans nematode nervous system.  The worms were not killed and with the system you can manipulate a specific part of their nervous system and see what happens (e.g. Does it still sleep?).</p>
-                    </dd>
-                  </dl>
-                </div>
-              </section>
-              
-              
-            </div>
-          </section>
-          </details>
-          <br>
-          
-        <!-- Science -->
-          <section class="wrapper style3 align-center">
-            <div class="inner">
+          <!-- Science -->
+          <section class="spotlight style2 orient-right content-align-left image-position-center onscroll-image-fade-in" id="science">
+            <div class="content">
               <h2>Science</h2>
-              <p>Some details about my science experience</p>
+              <h4><em>Searching for a frictionless vaccuum</em></h4>
+              <p>A fascination with the extremes of nature, a desire to deconstruct and understand “the thing that that other thing is made of“, and an appreciation for the abstract beauty of creative thought were what I learned from my high school science teacher Mr. Joseph Dumoulin.  So although I set out to become a medical doctor, I ended up a philosophical doctor practicing experimental particle physics at the CERN laboratory in Geneva, Switzerland.</p>
             </div>
-            <!-- Gallery -->
-            <div class="gallery style2 medium lightbox onscroll-fade-in">
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Big Data @ ATLAS
-                    </h3>
-                    <p> 
-                    I search for new fundamental particles and forces (e.g. dark matter) not currently described in the paradigm of particle physics. This work leverages complex statistical models to describe enormous datasets.
-                    </p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Plumbing @ ATLAS
-                    </h3>
-                    <p> 
-                    I automate data analysis pipeline workflows for physics searches and detector calibration to improve efficiency turnaround time of our collaborations data analysis. 
-                    </p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    ML with Jets @ ATLAS
-                    </h3>
-                    <p> 
-                    I study, develop, and implement techniques to identify the mother particle (e.g. gluon, top quark, Higgs boson) of multi-particle showers called “jets”.  These methods often involve machine learning to take full advantage of the information within our data.
-                    </p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    People @ ATLAS
-                    </h3>
-                    <p> 
-                    I have served multiple times as leader of ATLAS research groups focusing on (i) dark matter searches, (ii) hadronic jet tagging team, and (iii) Higgs boson tagging. These are diverse groups of up to 100 students and scientists.
-                    </p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Data Readout @ FASER
-                    </h3>
-                    <p> 
-                    I am helping to construct the FASER experiment to search for ultra-long-lived particles at the LHC.  I design and implement the data acquisition system that will ultimately collect and store all of the data from this experiment.
-                    </p>
-                  </div>
-                </article>                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Ultra-fast Detectors
-                    </h3>
-                    <p> 
-                    In graduate school, I contributed to the design of first generation ASICs for front-end readout of large-area photo detectors with picosecond timing resolution to measure things occurring one millionth of a millionth of a second apart.
-                    </p>
-                  </div>
-                </article>                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Sleep Science of Worms
-                    </h3>
-                    <p> 
-                    Early in graduate school, I studied the sleep-like state in simple organisms (e.g C. elegans nematode) by constructing a pulsed laser system to perform non-invasive dissection of the nervous system to control its behavior.
-                    </p>
-                  </div>
-                </article>                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    Flexible Detectors
-                    </h3>
-                    <p> 
-                    My first introduction to experimental research was an immersion in understanding the behavior of micromesh-gaseous detectors during an internship in France.  Ten years later, and my current experiment (ATLAS) is now installing this type of detector for use.
-                    </p>
-                  </div>
-                </article>                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-                  <div class="caption">
-                    <h3>
-                    String Theory
-                    </h3>
-                    <p> 
-                    My very first introduction to research. I swung for the fences and tried to understand the underpinnings of the universe as viewed by string theory.  I have become considerably more empirical since those days, and only more curious if this is “truth”.
-                    </p>
-                  </div>
-                </article>                
-
-              </div>
+            <div class="image">
+              <img src="images/monojet_cropped1.png" alt="" />
+            </div>
           </section>
-          
+
           <!-- Nitty Gritty -->
-          <br>
-          <br>
           <details>
-          <summary><b><em><span class="button large fit default">Want to see more of the science I've done?</span></em></b></summary>
+          <summary><b><em><span class="button large fit primary">Want to see more of the science I've done?</span></em></b></summary>
           <section>
             <div class="index align-left">
               
@@ -498,73 +307,23 @@
           </section>
           </details>
           <br>
-
-        <!-- Education -->
-          <section class="wrapper style3 align-center">
-            <div class="inner">
-              <h2>Education</h2>
-              <p>Some details about my science experience</p>
-            </div>
-            <!-- Gallery -->
-            <div class="gallery style2 medium lightbox onscroll-fade-in">
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Building Curricula</h3>
-                    <p>I have developed original educational materials for a myriad of audiences coming from all over the world.  These have been developed for both in person and virtual environments and have ranged from fundamental programming skills to Monte Carlo techniques and particle physics.</p>
-                  </div>
-                </article>
-                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Teaching and Training</h3>
-                    <p>I have organized and implemented numerous classes and tutorials.  These have been in the context of official university-certified courses, laboratory-based workshop training events, and adhoc individual tutorials.</p>
-                  </div>
-                </article>
-                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Mentoring and Advising</h3>
-                    <p>I have mentored dozens of students and helped them succeed in classroom and research settings and have provided individual advising to help students succeed in pursuing their chosen career through revising their CV’s and personal statements.</p>
-                  </div>
-                </article>
-                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Public Outreach</h3>
-                    <p>I relish the opportunity to share my enthusiasm for science, curiosity, and learning with everyone, in both formal and informal settings.  I have done this on numerous occasions throughout my career both as part of a group and as the main lead.</p>
-                  </div>
-                </article>
-                
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Outreach in Schools</h3>
-                    <p>The next generation of thinkers is perennially the greatest asset for any endeavor.  As such, it is necessary to feed the curiosity of youth and equip them with skills for success.  I do this in all communities I serve, from elementary to university students. </p>
-                  </div>
-                </article>                                                                
-
-              </div>
-          </section>
           
+          
+          <!-- Education -->
+          <section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in" id="education">
+            <div class="content">
+              <h2>Education and Engagement</h2>
+              <h4><em>Lightbulbs ... and more lightbulbs</em></h4>
+              <p>Learning is amazing, but to me teaching is beautiful.  It lives on the boundary of science and art, to communicate an idea to be shared knowledge for another yet having to craft it in a personal way - local for the individual in time and space.  And then the moment they get it, the lightbulb turns on, and the lamppost of humanity grows a little brighter.</p>
+            </div>
+            <div class="image">
+              <img src="images/teaching5.jpg" alt="" />
+            </div>
+          </section>
+
           <!-- Nitty Gritty -->
-          <br>
-          <br>
           <details>
-          <summary><b><em><span class="button large fit default">A pedagogue you say?</span></em></b></summary>
+          <summary><b><em><span class="button large fit primary">A pedagogue you say?</span></em></b></summary>
           <section>
             <div class="index align-left">
             
@@ -576,15 +335,15 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>Founding Training Lead</dt>
                     <dd>
                       <p>I was one of the founding convener of the HEP Software Foundation Training group which was formed for research-oriented training in software and computing skills in physics.</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>Educational Content Development</dt>
                     <dd>
                       <p>I designed original curricula to supplement a formal particle physics education.  The pedagogical philosophy of our training largely borrows from that of Software Carpentries.</p>
                     </dd>
-                    <dt>Analysis Automation</dt>
+                    <dt>Teaching and Training</dt>
                     <dd>
                       <p>I developed and lead numerous training events focused around supplemental research education for audiences of between 30 and 200 scientists both in person and distributed/virtual</p>
                       <ul>
@@ -608,15 +367,15 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>Mentorship</dt>
                     <dd>
                       <p>Assist in mentorship of first-generation university students from California State University participating in the NSF-REU summer student program at CERN.</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>Curriculum Development</dt>
                     <dd>
                       <p>I designed curricula focused on programming and research skills in particle physics. [Link to Course] </p>
                     </dd>
-                    <dt>Analysis Automation</dt>
+                    <dt>Remote Teaching</dt>
                     <dd>
                       <p>Implemented class on three separate occasions (2017, 2018, 2020) as a set of lectures given via video-conference to approximately 20 students throughout the the CSU system during the spring semester as preparation for summer student program. </p>
                     </dd>
@@ -637,17 +396,17 @@
                       <p>I supported courses for a cohort of 50 students taught by more than 30 different lecturers at AIMS South Africa.  These ranged from quantum mechanics (aquarely in my wheelhouse) to computational neuroscience and financial mathematics (a bit further afield).</p>
                       <p>I designed and implemented focused training tutorials for small groups in the evening.  These were both technical in nature and focused on math/science but also supported the writing skills and professional development of the students.</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>Thesis Supervision (2017)</dt>
                     <dd>
                       <p>I provided remote supervision and mentoring for two masters students in South Africa and Rwanda for their AIMS capstone research projects.</p>
                       <p>Designed a self-guided research project focused around programming, the Monte Carlo method, and hadronic jet physics.</p>
                     </dd>
-                    <dt>Analysis Automation</dt>
+                    <dt>Lecturer (2018 & 2019)</dt>
                     <dd>
                       <p>Created an original course entitled “The Life of a Particle” that introduced students to stochastic modelling using the Monte Carlo method in the context of quantum and particle physics.</p>
                       <p>Implemented the course on two occasions in (i) 2018 [Link to Course Website] and (ii) 2019 [Link to Course Website - taught jointly with Dr. Claire David from York University)</p>
                     </dd>
-                    <dt>Hadronic Tile Calorimeter</dt>
+                    <dt>Community Advocate (2015 - Present)</dt>
                     <dd>
                       <p>Serve as ad-hoc advocate for the AIMS institution to those interested in teaching at AIMS, and AIMS students interested in pursuing opportunities elsewhere.</p>
                       <p>Formed grassroots advocacy for AIMS-Swiss partnership and organized inaugural AIMS in the Alps networking event. [link to agenda]</p>
@@ -664,15 +423,15 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>Program Volunteer and Lead</dt>
                     <dd>
                       <p>I volunteered for two years and served as lead instructor for one year with the Space Explorers outreach program through the Kavli Institute for Cosmological Physics and the Office of Special Programs at the University of Chicago.</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>Consistent Outreach</dt>
                     <dd>
                       <p>I designed and taught weekly laboratory-based STEM lessons on Saturday morning for 20 minority high school students from the south side of Chicago.</p>
                     </dd>
-                    <dt>Analysis Automation</dt>
+                    <dt>"Space Camp" @ Yerkes Observatory</dt>
                     <dd>
                       <p>I lead the design and implementation of multi-day hands-on science camps at Yerkes Observatory in Williams Bay, WI. 2013 - Transforming Energy with Simple Machines. 2014 - (i) Renewable Energy and Green Engineering and (ii) Colors and Answers</p>
                     </dd>
@@ -688,11 +447,11 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>Public Tours</dt>
                     <dd>
                       <p>I lead English-speaking tour groups through numerous CERN experimental facilities to engage and educate the public on particle physics and collaborative, experimental science.</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>A Bilingual Weekend of Particles</dt>
                     <dd>
                       <p>I engaged tour groups in English and French throughout the entire course of the CERN OpenDays weekend in September 2019.</p>
                     </dd>
@@ -708,7 +467,7 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>A Collision of Science and Tromp-l'oeil</dt>
                     <dd>
                       <p>I was awarded one year fellowship to collaborate with artist Anthony Adcock to create painted visual expression of LHC collisions</p>
                     </dd>
@@ -724,29 +483,29 @@
                 </header>
                 <div class="content">
                   <dl>
-                    <dt>Dark Matter</dt>
+                    <dt>Pinkerton Academy (2017) - High School</dt>
                     <dd>
-                      <p>Implemented a multi-day workshop to educate high school students at Pinkerton Academy in Derry, NH in particle physics using the [ATLAS outreach toolkit] (Winter 2017)</p>
+                      <p>Implemented a multi-day workshop to educate high school students at Pinkerton Academy in Derry, NH in particle physics using the [ATLAS outreach toolkit].</p>
                     </dd>
-                    <dt>Hadronic Jets</dt>
+                    <dt>Chazy Central Rural School (2017 & 2018) - High School</dt>
                     <dd>
                       <p>Designed and implemented a high school physics enrichment short-course aboutparticle physics and research at the Large Hadron Collider at Chazy Central Rural School in Chazy, NY.</p>
                     </dd>
-                    <dt>Analysis Automation</dt>
+                    <dt>Lindblom Technical Academy (2011) - Middle School</dt>
                     <dd>
-                      <p>Invited judge for the Lindblom Technical Middle School Science Fair in Chicago, Illinois (Fall 2011) </p>
+                      <p>Invited judge for the Lindblom Technical Middle School Science Fair in Chicago, Illinois.</p>
                     </dd>
-                    <dt>Hadronic Tile Calorimeter</dt>
+                    <dt>CAURS Research Fair (2011) - College</dt>
                     <dd>
-                      <p>Invited judge for the Chicago Area Undergraduate Research Symposium in Chicago, Illinois (Spring 2011) </p>
+                      <p>Invited judge for the Chicago Area Undergraduate Research Symposium in Chicago, Illinois.</p>
                     </dd>
-                    <dt>Hadronic Tile Calorimeter</dt>
+                    <dt>St. Thomas the Apostle School (2010) - Elementary School</dt>
                     <dd>
-                      <p>Invited judge for the St. Thomas the Apostle Elementary School Science Fair in Chicago, Illinois (Winter 2010) </p>
+                      <p>Invited judge for the St. Thomas the Apostle Elementary School Science Fair in Chicago, Illinois.</p>
                     </dd>
-                    <dt>Hadronic Tile Calorimeter</dt>
+                    <dt>Rye Public School (2007) - Elementary School</dt>
                     <dd>
-                      <p>Invited judge for the Rye Elementary School Science Fair in Rye, New Hampshire (Winter 2007)</p>
+                      <p>Invited judge for the Rye Elementary School Science Fair in Rye, NH.</p>
                     </dd>
                   </dl>
                 </div>
@@ -757,68 +516,22 @@
           </section>
           </details>
           <br>
-          
-        <!-- Community -->
-          <section class="wrapper style3 align-center">
-            <div class="inner">
-              <h2>Community</h2>
-              <p>Some details about my science experience</p>
+
+          <!-- Community -->
+          <section class="spotlight style2 orient-right content-align-left image-position-center onscroll-image-fade-in" id="community">
+            <div class="content">
+              <h2>Community and People</h2>
+              <h4><em>We all need one another</em></h4>
+              <p>A chain is only as strong as its weakest link.  I am grateful though, that the links in the chain of humanity can reach out and help each other.  And it is because of those who have supported me that I am able to strive to support others - at times through formal acts and bureaucracy and at other times through simply saying, “Thanks, I appreciate you.”</p>
             </div>
-            <!-- Gallery -->
-            <div class="gallery style2 medium lightbox onscroll-fade-in">
-                <article>
-                  <a href="images/gallery/fulls/01.jpg" class="image">
-                    <img src="images/gallery/thumbs/01.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>International Development</h3>
-                    <p>I have been privileged growing up in the United States of America with the family and background I had.  This was by pure luck and I believe that its often necessary to look beyond our borders to do the greatest good in the world.</p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/02.jpg" class="image">
-                    <img src="images/gallery/thumbs/02.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Building Communities</h3>
-                    <p>I try to enrich the lives of those in my communities and so have taken a proactive and, when necessary, leading role to do this everywhere I go.  I strive to make these communities inclusive and fruitful for all those involved.</p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/03.jpg" class="image">
-                    <img src="images/gallery/thumbs/03.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Government in our Lives</h3>
-                    <p>Government plays an integral role in the lives of every citizen.  I enjoy discussing topics related to this and have served as a representative to speak directly with elected officials to advocate for research funding for fundamental science. </p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/04.jpg" class="image">
-                    <img src="images/gallery/thumbs/04.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Equity for Each Individual</h3>
-                    <p>Every individual should be empowered to succeed to their full extent and desire through the support of their peers and institutions.  I strive to help meet the unique needs of those which I can empower to help bring greater equity in society.</p>
-                  </div>
-                </article>
-                <article>
-                  <a href="images/gallery/fulls/05.jpg" class="image">
-                    <img src="images/gallery/thumbs/05.jpg" alt="" />
-                  </a>
-                  <div class="caption">
-                    <h3>Diversity for Societal Good</h3>
-                    <p>Diversity in groups breeds a diversity of opinions and ideas which ultimately brings about success.  As such, I strive to more fully understand diversity bring it to the communities which I help support.</p>
-                  </div>
-                </article>
-              </div>
+            <div class="image">
+              <img src="images/community4.jpg" alt="" />
+            </div>
           </section>
-          
+
           <!-- Nitty Gritty -->
-          <br>
-          <br>
           <details>
-          <summary><b><em><span class="button large fit default">"It takes a village to raise a child"</span></em></b></summary>
+          <summary><b><em><span class="button large fit primary">It takes a village to raise a child</span></em></b></summary>
           <section>
             <div class="index align-left">
             
@@ -942,15 +655,16 @@
           </section>
           </details>
           <br>
+
           
           <div class="index align-center">
           <section></section>
           <section>
             <header>
-              <h3>Mark Twain</h3>
+              <h3>Dalai Lama</h3>
             </header>
             <div class="content">
-              <blockquote>"I have never let my schooling interfere with my education."</blockquote>
+              <blockquote>"Happiness is not something ready made. It comes from your own actions."</blockquote>
             </div>
           </section>
           </div>
@@ -964,7 +678,12 @@
           <section class="wrapper style1 align-center" id="help">
             <div class="inner">
               <h1>How I Can Help</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum.</p>
+              <p>
+              I am energized by meaningful work with noble aims and energetic people and derive   
+              great professional satisfaction by working with others towards a common goal.
+              I've got a number of skills in my toolbelt so if you think they may be of service, 
+              don’t hesitate and reach out and get in contact. 
+              </p>
               
 
               <!-- help menu -->
@@ -972,50 +691,51 @@
               
                 <!-- helpitem -->
                 <section>
-                  <span class="icon style2 major fa-gem"></span>
+                  <span class="icon style2 major fa-chart-bar"></span>
                   <h3>Data Analytics</h3>
-                  <p>10 years experience in c++, python, and machine learning in collaborative environments.</p>
+                  <p>10 years experience in c++, python, and machine learning in collaborative environments. I can help you make cool plots.</p>
                 </section>
                 
                 <!-- helpitem -->
                 <section>
                   <span class="icon solid style2 major fa-save"></span>
                   <h3>Computing Systems</h3>
-                  <p>Data acquisition system design, distributed grid computing, and workflow automation.</p>
+                  <p>Data acquisition system design, distributed grid computing, and workflow automation. Let me help you build it.</p>
                 </section>
                 
                 <!-- helpitem -->
                 <section>
-                  <span class="icon solid style2 major fa-chart-bar"></span>
-                  <h3>Personal Professional Review</h3>
-                  <p>Review of resume/CV and personal statements.</p>
+                  <span class="icon solid style2 major fa-paper-plane"></span>
+                  <h3>Professional Review</h3>
+                  <p>I have helped dozens of students and colleagues improve their resume/CV and personal statements. </p>
                 </section>
                 
                 <!-- helpitem -->
                 <section>
-                  <span class="icon solid style2 major fa-chart-bar"></span>
+                  <span class="icon solid style2 major fa-desktop"></span>
                   <h3>Organizational Guidance</h3>
-                  <p>Guiding you through the process of starting a non-profit.</p>
+                  <p>I have built a team and started a non-profit, from scratch. Have an idea? Let's make it happen!</p>
                 </section>
                 
                 <!-- helpitem -->
                 <section>
-                  <span class="icon solid style2 major fa-chart-bar"></span>
+                  <span class="icon solid style2 major fa-bolt"></span>
                   <h3>Pedagogical Design</h3>
-                  <p>Curricula design and creation of educational materials for diverse groups of students on technical subjects.</p>
+                  <p>Curricula design and implementation for diverse groups of students on technical subjects. I can help you build your class.</p>
                 </section>
                 
                 <!-- helpitem -->
                 <section>
-                  <span class="icon solid style2 major fa-chart-bar"></span>
+                  <span class="icon solid style2 major fa-leaf"></span>
                   <h3>Teaching</h3>
-                  <p>Organizing and implementing/supporting the execution of your next course or training.</p>
+                  <p>Organizing, implementing, and supporting educational events for all ages around the world. Let's teach together.</p>
                 </section>                                                
               </div>
               
 
-
-              <!-- reference people -->
+<!-- 
+              <details>
+              <summary><b><em><span class="button large fit default">... but don't take my word for it.</span></em></b></summary>
               <section>
                 <div class="content">
                   <h2>but don't take my word for it ...</h2>
@@ -1024,71 +744,63 @@
           
                 <div class="gallery style2 medium lightbox onscroll-fade-in">
             
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:fabiani.veronica@gmail.com">Dr. Veronica Fabiani</a></h3>
-                      <p>Veronica, now Dr. Fabiani, was a student whom I mentored on ATLAS. I was honored to serve on her thesis committee and she is now doing spectacular things in the realm of data science.</p>
+                      <p>Veronica is a former student whom I mentored on ATLAS and on whose thesis committee I served. Ask her about me as a researcher and mentor.</p>
                     </div>
                   </article>
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Prof. Shih Chieh Hsu</a></h3>
-                      <p></p>
+                      <p>Shih Chieh is a professor at the University of Washington and my mentor and colleague for many years.  Ask him about my abilities as a scientist, a group leader, and a collaborator.</p>
                     </div>
                   </article>
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Prof. Lauren Tompkins</a></h3>
-                      <p></p>
+                      <p>Lauren is a professor at Stanford University and we have collaborated together on research and numerous EDI initiatives. Ask her about my abilities as a researcher and my commitment to furthering equity.</p>
                     </div>
                   </article>
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Dr. Babette Dobrich</a></h3>
-                      <p></p>
+                      <p>Babette is a staff scientist at CERN.  Beyond our overlap in physics interests, Babette and I have been close collaborators on initiatives involving the African Institute for Mathematical Sciences.</p>
                     </div>
                   </article>
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Abdullah Ezzat Fahmy</a></h3>
-                      <p></p>
+                      <p>Abdullah is an alumni from the African Institute for Mathematical Sciences who I taught and brought to CERN for a research internship on the FASER experiment.</p>
                     </div>
                   </article>                                                      
               
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Ridwan Raheem</a></h3>
-                      <p></p>
+                      <p>Ridwan is an alumni from the African Institute for Mathematical Sciences who I taught.  Since that time, I have closely mentored Ridwan in his pursuit of doctoral studies.</p>
                     </div>
                   </article>                                                      
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Prof. Sudhir Malik</a></h3>
-                      <p></p>
+                      <p>Sudhir is a professor of </p>
                     </div>
                   </article>                  
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Dr. Phillip Gadow</a></h3>
@@ -1096,8 +808,7 @@
                     </div>
                   </article>                  
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Sir Philipp Bimpong</a></h3>
@@ -1105,8 +816,7 @@
                     </div>
                   </article>
                   
-                  <!-- person -->
-                  <article>
+                  person                  <article>
                     <a href="images/profile.jpg" class="image"><img src="images/profile.jpg" alt="" /></a>
                     <div class="caption">
                       <h3><a href="mailto:">Eric</a></h3>
@@ -1116,24 +826,27 @@
                   
                                                                         
                   </div>
+                  </div>
                 <br>
               </section>
-              </section>
+              </details>              
+ -->
+              
 
               <!-- quote -->
-          <div class="index align-center">
-          <section></section>
-          <section>
-            <header>
-              <h3>Mark Twain</h3>
-            </header>
-            <div class="content">
-              <blockquote>"I have never let my schooling interfere with my education."</blockquote>
-            </div>
-          </section>
-          </div>
+              <div class="index align-left">
+              <section></section>
+              <section>
+                <header>
+                  <h3>Martin Luther King Jr.</h3>
+                </header>
+                <div class="content">
+                  <blockquote>"Life’s most persistent and urgent question is: <b>What are you doing for others?</b>"</blockquote>
+                </div>
+              </section>
+              </div>
 
-
+</section>
 
 
               
@@ -1142,69 +855,65 @@
           </section>
 
 <!-- Hobbies -->
-          <section class="wrapper style1 align-center" id="whatelse">
+          <section class="wrapper style1 align-center" id="hobbies">
             <div class="inner">
             
 
               <section>
-              <section class="wrapper style1 align-center" id="whatelse">
+              <section class="wrapper style1 align-center">
                 <div class="content">
                   <h1>The Other Stuff</h1>
-                  <h2>aka hobbies, interests, thoughts ...</h2>
-                  <p>Des bibendum. Donec ut ex </p>
+                  <h2>(aka hobbies, interests, thoughts ...)</h2>
+                  <p>I consider myself a hiker, a runner, a reader, a chef ... the qualities that come with these hobbies are normal, some may be intense or idiosyncratic to others, but all are Sam.</p>
                 </div>
           
                 <div class="gallery style2 medium lightbox onscroll-fade-in">
-            
+                  
                   <article>
-                    <a href="images/profile.jpg" class="image">
-                      <img src="images/profile.jpg" alt="" />
-                    </a>
+                    <a href="images/cooking1.jpg" class="image"><img src="images/cooking1.jpg" alt="" /></a>
                     <div class="caption">
                       <h3>Ipsum Dolor</h3>
                       <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-                      <ul class="actions fixed">
-                        <li><span class="button small">Details</span></li>
-                      </ul>
                     </div>
                   </article>
-
+                  
                   <article>
-                    <a href="images/profile.jpg" class="image">
-                      <img src="images/profile.jpg" alt="" />
-                    </a>
+                    <a href="images/mountain5.jpg" class="image"><img src="images/mountain5.jpg" alt="" /></a>
                     <div class="caption">
                       <h3>Ipsum Dolor</h3>
                       <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-                      <ul class="actions fixed">
-                        <li><span class="button small">Details</span></li>
-                      </ul>
                     </div>
                   </article>
-
+                  
                   <article>
-                    <a href="images/profile.jpg" class="image">
-                      <img src="images/profile.jpg" alt="" />
-                    </a>
+                    <a href="images/mountain7.jpg" class="image"><img src="images/mountain7.jpg" alt="" /></a>
                     <div class="caption">
                       <h3>Ipsum Dolor</h3>
                       <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-                      <ul class="actions fixed">
-                        <li><span class="button small">Details</span></li>
-                      </ul>
                     </div>
                   </article>
-
+                  
                   <article>
-                    <a href="images/profile.jpg" class="image">
-                      <img src="images/profile.jpg" alt="" />
-                    </a>
+                    <a href="images/running1.jpg" class="image"><img src="images/running1.jpg" alt="" /></a>
                     <div class="caption">
                       <h3>Ipsum Dolor</h3>
                       <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-                      <ul class="actions fixed">
-                        <li><span class="button small">Details</span></li>
-                      </ul>
+                    </div>
+                  </article>
+                  
+                  <article>
+                    <a href="images/running3.jpg" class="image"><img src="images/running3.jpg" alt="" /></a>
+                    <div class="caption">
+                      <h3>Ipsum Dolor</h3>
+                      <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+                    </div>
+                  </article>                                                                                          
+
+                  <article>
+                    <a href="images/science3.jpg" class="image"><img src="images/science3.jpg" alt="" /></a>
+                    <div class="caption">
+                      <h3>Ipsum Dolor</h3>
+                      <p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
                     </div>
                   </article>
               
@@ -1212,7 +921,7 @@
                 <br>
                 <br>
                 <details>
-                <summary><b><em><span class="button large fit default">What more is there?</span></em></b></summary>
+                <summary><b><em><span class="button large fit primary">Only pictures? ... no</span></em></b></summary>
                 
                 <!-- organization/position -->
                 <section>
@@ -1326,16 +1035,17 @@
               </section>
               
                <!-- quote -->
-            <div class="index align-center">   
-            <section></section>
-              <section>
-                <header>
-                  <h3>Mark Twain</h3>
-                </header>
-                <div class="content">
-                  <blockquote>"Quote about the people in our lives making us who we are."</blockquote>
-                </div>
-              </section>
+          <div class="index align-left">
+          <section></section>
+          <section>
+            <header>
+              <h3>Henry David Thoreau</h3>
+            </header>
+            <div class="content">
+              <blockquote>"I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived."</blockquote>
+            </div>
+          </section>
+          </div>
               
             
             </div>
@@ -1347,7 +1057,7 @@
             <div class="content">
               <h1>Get in touch</h1>
               <h3><em><b><a href="mailto:smeehan12@gmail.com">smeehan12@gmail.com</a></b></em></h3>
-              <p>I prefer email. Although my other contact info is available if you search (not that hard probably) on the internet, I prefer email. I have some social media accounts, but prefer to not use them, particularly if it is my first time meeting you. So email me if :
+              <p>Although my other contact info is available if you search (not that hard probably) on the internet, I prefer email. I have some social media accounts, but prefer to not use them, particularly if it is my first time meeting you. So email me if :
               <div style="text-indent: 1em;">
               <ul style="margin-left:1em">
                 <li>You feel we share a common <b><em>vision</em></b> and can collaborate on a project.</li>
@@ -1359,7 +1069,7 @@
               </p>
             </div>
             <div class="image">
-              <img src="images/profile.jpg" alt="" />
+              <img src="images/contact1_cropped.jpg" alt="" />
             </div>
           </section>
 

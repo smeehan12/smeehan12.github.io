@@ -1,0 +1,966 @@
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{fancyhdr}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1.0em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}
+    {\minipage[t]{\linewidth}\list{}{%
+        \setlength{\leftmargin}{\bibhang}%
+        \setlength{\itemindent}{-\leftmargin}%
+        \setlength{\itemsep}{\bibsep}%
+        \setlength{\parsep}{\z@}%
+        }}
+    {\endlist\endminipage}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=0.8in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%\pagenumbering{roman}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+%                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+%
+% Usage: \makeheading{name}
+%
+% Place at top of document. It should be the first thing.
+\newcommand{\makeheading}[1]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+                {\large \bfseries #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+%
+% Follow this section IMMEDIATELY with the first line of the section
+% text. Do not put whitespace in between. That is, do this:
+%
+%       \section{My Information}
+%       Here is my information.
+%
+% and NOT this:
+%
+%       \section{My Information}
+%
+%       Here is my information.
+%
+% Otherwise the top of the section header will not line up with the top
+% of the section. Of course, using a single comment character (%) on
+% empty lines allows for the function of the first example with the
+% readability of the second example.
+\renewcommand{\section}[2]%
+        {\pagebreak[2]\vspace{1.3\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         \hspace{0in}%
+         \marginpar{
+         \raggedright \scshape #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{compactitem}[#1]}
+        {\end{compactitem}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Samuel Meehan - \textit{Curriculum Vitae}}
+
+\section{Contact Information}
+%
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.85in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\textwidth}}
+\href{https://home.cern/}{The European Organization for Nuclear Research} \\ 
+Geneva, Switzerland           \\
+\textit{phone} : +1-518-420-5364 (USA) , +41 22 76 73436 (CERN) \\
+\textit{email} : \href{mailto:samuel.meehan@cern.ch}{samuel.meehan@cern.ch} \\   
+%\textit{website} :  \href{https://meehan.web.cern.ch}{https://meehan.web.cern.ch}\\
+\end{tabular}
+
+
+
+\section{Professional History}
+\begin{innerlist}
+\item 2019 - Pres : The European Organization for Nuclear Research (Senior Research Fellow)
+\item 2015 - 2019 : University of Washington (Research Associate)
+\item 2014 - 2015 : African Institute for Mathematical Sciences (Assistant Lecturer) and \newline \hspace*{2cm} The University of Cape Town (Research Associate)
+\item 2009 - 2014 : The University of Chicago (MSc and PhD)
+\item 2005 - 2009 : The University of New Hampshire (BS)
+\end{innerlist}
+
+
+
+\section{Academic Education}
+
+{\textbf{The University of Chicago}},
+Chicago, IL USA
+
+\begin{outerlist}
+\item[] Ph.D.,
+        \href{http://physics.uchicago.edu/}
+             {Physics}, August 2014
+        \begin{innerlist}
+        \item Area of Study: Experimental High Energy Particle Physics
+        \item Thesis: \emph{\href{https://cds.cern.ch/record/1745988?ln=en}{A Search for Resonant Production of $ZZ/ZW$ Pairs in the Semi-leptonic $\ell\ell q\bar{q}$ Final State in Proton-Proton Collisions at $\sqrt{s}=$8 TeV with the ATLAS Detector}}
+        \item Advisor: Dr. Mark Oreglia
+        \end{innerlist}
+
+\item[] M.S.,
+        \href{http://physics.uchicago.edu/}
+             {Physics}, August 2010
+        \begin{innerlist}
+        \item Area of Study: Biophysics
+        \item Thesis: \emph{Femtosecond Laser Axotomy in the C. elegans Nematode}
+        \item Advisor: Dr. David Biron
+        \end{innerlist}
+\end{outerlist}
+\vspace{3 mm}
+{\textbf{The University of New Hampshire}},
+Durham, NH USA
+
+\begin{outerlist}
+\item[] B.S.,
+        \href{http://www.physics.unh.edu/}
+             {Physics}, May 2009
+        \begin{innerlist}
+        \item Area of Study: Nuclear Physics
+        \item Thesis: \emph{Simulation of the Silicon Tracking Detector for CLAS12 Collaboration}
+        \item Advisor: Dr. Maurik Holtrop
+        \end{innerlist}
+\end{outerlist}
+
+
+
+\section{Positions of Responsibility}
+\vspace*{-0.1in}
+\begin{outerlist}
+\item[] \href{https://snowmass21.org/}{Snowmass} US Particle Physics Review Process (2019-Present)
+\begin{innerlist}
+\item Lead Convener of the \href{https://snowmass21.org/community/diversity}{Diversity, Equity and Inclusion topical group}
+\item Member of the \href{https://snowmass21.org/cpcg/start}{Ethics Task Force}
+\end{innerlist}
+\item[] \href{https://hepsoftwarefoundation.org/}{HEP Software Foundation} and \href{https://first-hep.org/}{First-HEP} (2019-Present)
+\begin{innerlist}
+\item Lead Convener of the \href{https://hepsoftwarefoundation.org/workinggroups/training.html}{Educational Training Group}
+\item Lead Organizer of ATLAS Computing Skills Bootcamp (August 2019)
+\item Lead Organizer of HSF Analysis Preservation Bootcamp (February 2019)
+\item Lead Organizer of Virtual Continuous Integration Bootcamp (June 2020)
+\item Lead Organizer of Virtual Containerization Bootcamp (July 2019)
+\end{innerlist}
+\item[] \href{https://sites.google.com/view/kenteconnect/home}{Kente Connect School Computer Initiative}
+\begin{innerlist}
+\item Founder and President (2018 - Present)
+\end{innerlist}
+\item[] University of Washington
+\begin{innerlist}
+\item Local Organizer of the Dark Matter at the LHC Workshop (August 2019)
+\item Lead Facilitator of UW/Dartmouth/CERN Lunch Seminar Series (2017-2018)
+\end{innerlist}
+\item[] The ATLAS Collaboration
+\begin{innerlist}
+\item Co-convener of the Exotic Physics Dark Matter Search Group (April 2018 - Present)
+\item Leader of the Higgs($b\bar{b}$) Tagging Group (October 2017 - Present)
+\item Organizer of ATLAS Boosted Object Tagging Workshop (April 2017)
+\item Co-convener of the ATLAS Jet Substructure Group (September 2016 - September 2017)
+\item Hadronic Tile Calorimeter Data Quality Leader (Winter 2013)
+\item Hadronic Tile Calorimeter Control System On-call Expert (Summer 2012) 
+\end{innerlist}
+\item[] African Institute for Mathematical Sciences
+\begin{innerlist}
+\item Lecturer - AIMS Ghana (Winter 2018 and Winter 2019 exp.)
+\end{innerlist}
+\item[] California State University
+\begin{innerlist}
+\item Assistant Lecturer (Winter 2017, 2018, and 2020 (exp.))
+\end{innerlist}
+\item[] The University of Chicago
+\begin{innerlist}
+\item Lead Organizer and Instructor - Pedagogy in Physics (Winter and Spring 2014)
+\item Lead Instructor - KICP Space Explorers Outreach Program (2013-2015)
+\item Lead Organizer - Physics graduate student seminar series (Spring 2011)
+\end{innerlist}
+\end{outerlist}
+
+
+
+
+
+\section{Honors \& Awards}
+\vspace*{-0.09in}
+\begin{outerlist}
+\item[] University of Washington
+\begin{innerlist}
+\item US-ATLAS Physics Center Fellowship at Lawrence Berkeley National Laboratory, 2018
+\item US-LHC Users Organization Lightning Round Talk Award, 2016
+\end{innerlist}
+\item[] University of Chicago (Graduate)
+\begin{innerlist}
+\item US-LHC Users Organization Lightning Round Talk Award, 2013
+\item European Physical Society Elsevier Young Scientist Award, 2013
+\item Nathan Sugarman Award for Excellence in Graduate Research, 2013
+\item Arts$|$Sciences Graduate Collaboration Award, 2012-2013 (\href{http://www.youtube.com/watch?v=x6qU5f0-UCk&list=PLWxB4uPr_NVVHTOJC1UOt37gmDtQfMgrQ&index=4}{Link to Project Videography})
+\item National Science Foundation US-LHC Graduate Student Award, 2012
+\item Robert Millikan Fellowship for Teaching (NSF GAANN Funded), 2011-2013 
+\item Robert G. Sachs Research Fellowship, 2010
+\end{innerlist}
+\item[] University of New Hampshire (Undergraduate)
+\begin{innerlist}
+\item Senior Physics Achievement Award, UNH 2009
+\item Phi Beta Kappa, UNH 2009
+\item Barry M. Goldwater Scholar (Honorable Mention), 2008
+\item International Research Opportunities Program Grant, UNH 2008
+\item Golden Key International Honor Society, 2008
+\item Pi Mu Epsilon Mathematics Honor Society, UNH 2007
+\item REU Fellowship, Stony Brook University 2007
+\item John and Rose Mendelsohn Kurtz Scholarship, UNH 2007
+\item Richard N. St. Onge Award, UNH 2006
+\item Presidential Scholar Award, UNH 2005
+\end{innerlist}
+\end{outerlist}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+\section{Research Experience}
+
+\textbf{The European Organization for Nuclear Research}    \hfill \textbf{April 2019 - Present}
+\begin{outerlist}
+\item[] \textit{\href{https://atlas.cern/}{ATLAS Collaboration}}%
+        \begin{innerlist}
+            \item Co-convener of the Exotics Jets and Dark Matter subgroup responsible for searches for dark matter in hadronic final states.  This group consists of approximately 100 students and researchers.  The convener orchestrates and manages the scientific activities of the entire group to guide novel ideas to scientific publications in a timely manner.
+            \item Developing luminosity calibration techniques for low luminosity LHC running conditions for application to precision electroweak measurements.
+            \item Implementation of advanced analysis preservation techniques and workflow automatization for executing data calibration procedures, specifically surrounding the calibration of hadronic jet energy.
+        \end{innerlist}
+\item[] \textit{\href{https://faser.web.cern.ch/}{FASER Collaboration}}%
+    \hfill \textbf{April 2019 - Present}
+        \begin{innerlist}
+            \item Lead developer of calorimeter and trigger scintillator low level data acquisition system.
+            \item Contributing to global trigger and data acquisition integration.
+            \item Performed initial calorimeter and scintillator commissioning tests.
+        \end{innerlist}
+\item[] \textit{\href{https://hepsoftwarefoundation.org/}{HEP Software Foundation - HSF}}%
+    \hfill \textbf{November 2019 - Present}
+        \begin{innerlist}
+            \item Co-convener of the \href{https://hepsoftwarefoundation.org/workinggroups/training.html}{HSF-Training} subgroup.
+            \item Responsible for organizing both in-person and virtual bootcamps focused around cultivating expertise in computing tools and techniques essential in particle physics.  These workshops ranged in size from thirty participants to 250 participants. 
+            \item Developed a \href{https://hepsoftwarefoundation.org/training/curriculum.html}{core HEP computing curriculum} of original educational content and content developed in collaboration with the \href{https://software-carpentry.org/}{Software Carpentry} organization to facilitate a broader and more inclusive impact of our work.
+            \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The University of Washington}    \hfill \textbf{June 2015 - Present}
+\begin{outerlist}
+\item[] \textit{\href{https://atlas.cern/}{ATLAS Collaboration}}%
+        \begin{innerlist}
+            \item Co-convener of the Exotics Jets and Dark Matter subgroup.
+            \item Co-convener of the JetEtMiss Jet Substructure group responsible for the development of techniques to reconstruct, identify, and calibrate the decays of highly boosted hadronic decays of massive particles via the study of the internal structure of jets.  This group consisted of approximately 50 students and researchers.
+            \item Performed searches for beyond the Standard Model physics with a recent focus being on those pertaining to Dark Matter at the LHC.  My focus has been on searching for hadronically decaying Higgs and massive gauge bosons produced in association with Dark Matter using dedicated hadronic jet reconstruction techniques as well as for low mass dijet resonances.
+	   \item Testing and commissioning advanced hadronic jet reconstruction techniques to suppress the effects of event pileup contamination both at the jet constituent level and the jet finding and grooming level.  
+            \item Pioneering the use of machine learning techniques to the application of hadronic decays of W bosons and top quarks.
+            \item Developed advanced techniques for the identification of highly boosted $H\rightarrow b\bar{b}$ decays using.
+            \item Working with the pixel detector group to maintain and improve the software used for the reconstruction of data and simulation for the validation of changes made to the code base.
+            \item Development of High Luminosity LHC inner-tracking detector pixel detector upgrade data acquisition system and software emulation.
+        \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The University of Cape Town} \hfill \textbf{September 2014 - June 2015}
+\begin{outerlist}
+\item[] \textit{\href{https://atlas.cern/}{ATLAS Collaboration}}%
+        \begin{innerlist}
+            \item Contributed to the combination of beyond the Standard Model physics searches involving pairs of gauge bosons towards an LHC Run I legacy paper and a reinterpretation of the results in a more model independent context.
+            \item Optimizing jet substructure techniques for the identification of high momentum gauge bosons reconstructed as a single hadronic jet using standard and multivariate techniques and the performance related aspects concerning calibration and systematic uncertainties.
+        \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The University of Chicago}    \hfill \textbf{May 2010 - August 2014}
+\begin{outerlist}
+\item[] \textit{\href{https://atlas.cern/}{ATLAS Collaboration}}%
+        \begin{innerlist} 
+            \item Performed signature based searches for beyond the Standard Model physics.  
+	    \begin{innerlist}
+	    \item Used the 8 TeV dataset to search for resonant production of $ZZ/ZW$ pairs, interpreted as a search for Randall-Sundrum gravitons and heavy partners of the $W$ and $Z$ bosons.
+	     \item Used the 7 TeV dataset to search for heavy first generation vector-like quarks decaying to a $W/Z$ boson and a light quark.
+	    \end{innerlist}
+            \item Optimized and applied jet substructure techniques used to identify high momentum, hadronically decaying bosons reconstructed as a single jet.  Specifically for the application to searches for broad signatures of new physics and electroweak measurements used to constrain anomalous gauge boson couplings.
+	    \item Investigated the Standard Model properties of jets produced in association with a Z boson. 
+            \item Integrated the calibration diagnostic systems of the hadronic tile calorimeter into a single framework to be used for future detector diagnostics during LHC running and maintenance shutdowns.
+             \item Served on team of control room operations for the hadronic tile calorimeter and on-call expert during the 2012 data collection period.            
+	     \item Served on the hadronic tile calorimeter data quality validation team during the collection and reprocessing of the dataset collected during 2012.
+             \item Supervised and mentored two technical students employed by the university to maintain technical operations expertise pertaining to ATLAS the hadronic tile calorimeter while providing optimal educational experience for students.  
+        \end{innerlist}
+  	
+\item[] \textit{Femtosecond Laser Nanosurgery in \textit{C. elegans}}%
+        \begin{innerlist}
+            \item Constructed pulsed laser system to perform axotomy and ablation of single nerves inside \textit{C. elegans} nematode to study topics related to sleep-like states.
+        \end{innerlist}
+    
+\item[] \textit{Large Area Picosecond Photodector Collaboration}%
+         \begin{innerlist}
+            \item Contributed to the development of first generation ASIC for use in photodetectors with projected picosecond timing resolution.
+            \item Designed and implemented DC testboard for evaluation of ASIC.
+        \end{innerlist}~
+\end{outerlist}
+
+\vspace*{3mm}
+
+\textbf{The University of New Hampshire}    \hfill \textbf{September 2005 - May 2009}
+\begin{outerlist}
+\item[] \textit{\href{https://www.jlab.org/Hall-B/clas12-web/}{CLAS12 Collaboration}}%
+    \begin{innerlist}
+        \item Developed simulation of silicon vertex tracking detector as tool for upgrade studies of CLAS experiment at Jefferson Lab.  (Advisor: Maurik Holtrop)
+    \end{innerlist}
+\item[] \textit{Research Assistant}%
+    \begin{innerlist}
+        \item Developed numerical simulations to study the inflationary period of the early universe.  (Advisor: Per Berglund)
+    \end{innerlist}~
+\end{outerlist}
+
+\vspace*{-1mm}
+
+\textbf{Commisariat a l'Energrie Atomique}    \hfill \textbf{Summer 2009}
+\begin{outerlist}
+\item[] \textit{\href{https://www.jlab.org/Hall-B/clas12-web/}{CLAS12 Collaboration}}%
+    \begin{innerlist}
+        \item Evaluated performance of Micromegas inner tracking detectors in non-standard geometries for application in the upgrade of the CLAS experiment at Jefferson Lab.  (Advisor: Jacques Ball)
+    \end{innerlist}~
+\end{outerlist}
+
+\vspace{-1mm}
+
+\textbf{Stonybrook University}    \hfill \textbf{Summer 2008}
+\begin{outerlist}
+\item[] \textit{\href{https://atlas.cern/}{ATLAS Collaboration}}%
+    \begin{innerlist}
+        \item Developed simulation and tools to perform relative calibration of liquid argon electromagnetic calorimeter for the initial commissioning of the ATLAS detector.  (Advisor: Michael Rijssenbeek)
+    \end{innerlist}
+\end{outerlist}
+
+
+
+
+
+
+
+\section{Education Experience}
+
+\textbf{The European Organization for Nuclear Research}
+\begin{outerlist}
+\item[] \textit{HSF Virtual Containerization and Docker - \href{https://indico.cern.ch/event/934651/}{Link to Webpage}}%
+    \hfill \textbf{July 2020}
+    \begin{innerlist}
+	\item Introduced students to concepts of continuous integration and workflow automatization within version control environments.
+    \end{innerlist}
+\item[] \textit{HSF Virtual Continuous Integration Bootcamp - \href{https://indico.cern.ch/event/904759/}{Link to Webpage}}%
+    \hfill \textbf{June 2020}
+    \begin{innerlist}
+	\item Organizing the first entirely online/virtual training event for the HEP Software Foundation.
+	\item Mentored the pedagogy of more than ten educators and guided the participation and learning for over 250 participants distributed throughout the globe.
+	\item Introduced students to concepts and tools surrounding containerization of computing environments and software.
+    \end{innerlist}
+\item[] \textit{HSF Analysis Preservation Bootcamp - \href{https://indico.cern.ch/event/854880/}{Link to Webpage}}%
+    \hfill \textbf{February 2020}
+    \begin{innerlist}
+	\item Organizing an intensive three-day workshop on analysis preservation to be held jointly between ATLAS and CMS students in the context of the HEP Software Foundation training program.
+        \item Promote and experiment with cross-collaboration educational platforms and knowledge-sharing in a sustainable way.
+    \end{innerlist}
+\item[] \textit{US-ATLAS Computing Bootcamp - \href{https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/}{Link to Webpage}}%
+    \hfill \textbf{August 2019}
+    \begin{innerlist}
+	\item Spear-headed and executed a week-long, hands-on technical computing skills workshop in collaboration with Software Carpentries and First-HEP for 40 PhD students within US-ATLAS.
+	 \item Designed original educational modules targeting computing skills essential for modern research practices in high energy physics.
+	 \item Served as the primary organizer for logistical considerations and global curriculum design.
+    \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The African Institute for Mathematical Sciences (\href{https://www.nexteinstein.org/}{AIMS})}
+\begin{outerlist}
+\item[] \textit{Lecturer - \href{http://www.aims.edu.gh/}{Ghana}}%
+    \hfill \textbf{January 2018 and January 2019}
+    \begin{innerlist}
+        \item Designed and presented a three week lecture course ($>$50 contact hours) for 20 masters level students
+        \item Students came from diverse cultural/ethnic backgrounds from throughout the African continent with academic focuses ranging from pure/theoretical mathematics to applied physics and financial mathematics.
+        \item Course focused on the design of Monte Carlo simulations contextualized using the topic of quantum and particle physics - \href{https://github.com/smeehan12/LifeOfAParticle}{Link to Course GitLab}.
+        \item Learning goals focused around fundamental concepts in quantum physics as well as computing and computer programming skills in python, C++, and Git-based version control.
+    \end{innerlist}
+\item[] \textit{Assistant Lecturer - \href{http://www.aims.ac.za/en/opportunities/tutors}{South Africa}}%
+    \hfill \textbf{September 2014 - June 2015}
+    \begin{innerlist}
+        \item Assist in mentorship and instruction of diverse group of more than 40 African students coming from a wide array of academic, cultural, and linguistic backgrounds.
+        \item Served as instructor for all skill-based courses designed to provide a strong foundation in a wide array of subjects (e.g. physics problem solving, programming, mathematical proof, statistics, etc.) and for focused special-topic courses in physics and related areas (e.g. quantum mechanics, numerical analysis, biophysics, etc.).
+        \item Provided focused training and mentorship to one student during the completion of her thesis at the University of Cape Town.
+    \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The University of Washington}
+\begin{outerlist}
+\item[] \textit{Research Mentor/Supervisor}%
+    \hfill \textbf{2015 - Present}
+    \begin{innerlist}
+	\item Supervised over 30 undergraduate, masters, and PhD students in projects pertaining to the ATLAS experiment and high energy particle physics.
+         \item Designed an introductory research tutorial for onboarding new bachelors-level students to the ATLAS research program through introduction to fundamental concepts incolving Monte Carlo simulation and hadronic jet physics (\href{https://github.com/smeehan12/ToyMCJetsTutorial/blob/master/Note/ToyMCJetTutorial.pdf}{Link to Tutorial}).
+    \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{California State University}
+\begin{outerlist}
+\item[] \textit{Assistant Lecturer - \href{http://zimmer.csufresno.edu/~yogao/ATLAS/NUPAC.html}{LHC Physics Skills}}%
+    \hfill \textbf{Winter 2017 and 2018}
+    \begin{innerlist}
+        \item Developed curriculum on programming and research skills in particle physics.  
+        \item Implemented class as set of lectures given via video-conference to approximately 20 students throughout the the CSU system during the spring semester as preparation for summer student program.
+        \item Course website documented for open consumption - \href{https://indico.cern.ch/event/609167/}{Link to Course}
+    \end{innerlist}
+\item[] \textit{Mentor/Supervisor - \href{http://zimmer.csufresno.edu/~yogao/ATLAS/NUPAC.html}{CERN Summer Student Program}}%
+    \hfill \textbf{Summer 2016 and 2017}
+    \begin{innerlist}
+        \item Assist in mentorship of first-generation university students from California State University participating in the NSF-REU summer student program at CERN.
+    \end{innerlist}
+\end{outerlist}
+
+\vspace{3mm}
+
+\textbf{The University of Chicago}
+\begin{outerlist}
+\item[] \textit{Lead Instructor - \href{http://kicp.uchicago.edu/education/explorers/}{Space Explorers}}%
+    \hfill \textbf{September 2013 - August 2014}
+    \begin{innerlist}
+        \item Served as primary instructor for the Space Explorers outreach program through the Kavli Institute for Cosmological Physics.
+        \item Designed and taught weekly laboratory-based science lessons for 20 high school students.
+	\item Work in partnership with the \href{https://osp-cp.uchicago.edu/}{Office of Special Programs} to implement academic enrichment programs for underprivileged high school students from the south side of Chicago.
+        \item Lead the design and instruction of two hands-on science camps at Yerkes Observatory in Williams Bay, WI. 
+        \begin{innerlist}
+		\item Three day intensive workshop during December 2013 based on ``transforming energy" and simple machines.  (\href{http://kicp.uchicago.edu/events/kicp_yerkes.html#id_392}{Link to Website})
+        	\item Week-long immersive science camp during August 2014 focused on renewable energy and the engineering of technologies used for this purpose. (\href{http://kicp.uchicago.edu/events/kicp_yerkes.html#id_443}{Link to Website})
+        \end{innerlist}
+    \end{innerlist}
+\item[] \textit{Research Mentor}%
+    \hfill \textbf{Summer 2011 - August 2014}
+    \begin{innerlist}
+        \item Mentored four undergraduate students from University of Chicago conducting research within the ATLAS group.
+        \item Mentored CERN summer research student during the course of the summer of 2012 research program with the ATLAS hadronic tile calorimeter group on detector performance project. 
+        \item Mentored NSF-REU summer student during the course of his summer research program with the University of Chicago ATLAS research group. 
+        \item Developed introductory tutorial focused around particle physics based data analysis intended for undergraduate students. (\href{https://github.com/smeehan12/StandaloneAnalysisTutorial/blob/master/StandaloneAnalysisTutorial.pdf}{Link to Materials})
+    \end{innerlist}
+    
+\item[] \textit{Teaching Assistant}%
+    \hfill \textbf{January 2010 - May 2013}
+    \begin{innerlist}
+        \item Introduction to Electronics (Spring 2013)
+        \begin{innerlist}
+            \item Tailored lab sessions to meet course design on topics in electronics including DC/AC circuits, transistors, integrated circuits, digital circuits, and FPGAs.
+            \item Lead laboratory sessions as sole instructor twice each week.
+        \end{innerlist}
+        \item Introductory Physics I (Fall 2011)
+        \item Introductory Physics II (Winter 2010)
+        \item Introductory Physics III (Spring 2010)
+        \begin{innerlist}
+            \item Conducted independent weekly discussion sections.
+            \item Lead weekly laboratory sessions as sole instructor.
+        \end{innerlist}
+    \end{innerlist}
+    
+\item[] \textit{Workshop Instructor - \href{http://kicp.uchicago.edu/events/kicp_workshops-2014.html\#id\_429}{Summer School on Education and Outreach}} %
+    \hfill \textbf{July 2014}
+    \begin{innerlist}
+        \item Lead interactive workshop on the Space Explorers outreach program design and execution for graduate students (\href{http://kicp.uchicago.edu/events/kicp_workshops-2014.html#id_429}{Worshop URL}).
+        \end{innerlist}
+
+\item[] \textit{Teaching Consultant - \href{http://teaching.uchicago.edu/?/graduate-instructors/the-teaching-consultant-program.html}{Center for Teaching and Learning}}%
+    \hfill \textbf{Oct. 2013 - July 2014}
+    \begin{innerlist}
+        \item Study and assess graduate students from other departments while they teach in order to provide directed feedback concerning teaching strategies to improve their effectiveness.
+        \item Designed and lead a self-education course for peers focused around physics pedagogy in the context of undergraduate students. 
+    \end{innerlist}
+    
+\end{outerlist}
+
+\vspace{1.3\baselineskip}
+
+\textbf{The University of New Hampshire}
+\begin{outerlist}
+\item[] \textit{Mathematics Instructional Center Tutor}%
+    \hfill \textbf{September 2008 - May 2009}
+    \begin{innerlist}
+        \item Taught students from all introductory math courses, and fields of study, both in the physical sciences and others. 
+    \end{innerlist}
+\item[] \textit{Teaching Assistant}%
+    \hfill \textbf{January 2006 to May 2007}
+    \begin{innerlist}
+        \item Introductory Physics I \& II (Honors Section)
+        \begin{innerlist}
+            \item Served as independent teaching assistant for year-long, discussion-based, introductory course for physics majors.
+            \item Lead weekly lab activities and assisted with in-class demonstrations.
+        \end{innerlist}
+    \end{innerlist}
+\item[] \textit{Society of Physics Students Tutor}%
+    \hfill \textbf{September 2005 - May 2009}
+    \begin{innerlist}
+        \item Held weekly tutoring section for all introductory physics courses.
+        \item Assisted with homework and lead exam review sessions.
+    \end{innerlist}
+\end{outerlist}
+
+
+
+
+
+
+
+
+
+
+\section{Outreach \& Service}
+\vspace*{-0.09in}
+\begin{itemize}
+\item[] \textit{\href{https://snowmass21.org/cpcg/start}{APS/DPF Ethics Task Force}} 
+    \hfill \textbf{2020} 
+    \begin{innerlist}
+	\item Created initial Code of Conduct and Community Guidelines for the APS Division of Particles and Fields Snowmass community planning process to establish professional guidelines for a diverse community of over 3000 members.
+    \end{innerlist}
+\item[] \textit{\href{https://sites.google.com/view/kenteconnect/home}{Kente Connect School Computer Initiative} - Ghana} 
+    \hfill \textbf{2018 - Present} 
+    \begin{innerlist}
+	\item Organized the donation of laptops and peripheral devices from the United States to junior high school in rural Ghana and organized ICT teacher training. 
+	\item \textit{January 2019} - Delivered twenty laptops, a projector, and a printer to the Bomfa Junior High School. \textit{August 2020} - Delivered five laptops and peripheral devices to the Adonwomase Junior High School.
+    \end{innerlist}\item[] \textit{Particle Physics for High Schoolers - \href{http://www.chazy.org/pages/CCRS}{CCRS}, Chazy, NY} 
+    \hfill \textbf{December 2017 and 2018} 
+    \begin{innerlist}
+	\item Designed a one day outreach activity for students to introduce them to the field of particle physics research at CERN.
+	\item Activity available for open use - \href{https://github.com/smeehan12/CCRS2017_ParticlePhysics}{Link to Activity Space}
+    \end{innerlist}
+\item[] \textit{CERN/LHC Outreach Workshop - Pinkerton Academy, Derry, NH} 
+    \hfill \textbf{December 2016} 
+    \begin{innerlist}
+	\item Designed three day workshop to educate high school students at Pinkerton Academy in Derry, NH about research at the Large Hadron Collider.  
+    \end{innerlist}
+\item[] \textit{Particle Physics Research Community Advocate} 
+    \hfill \textbf{March 2014/2017} 
+    \begin{innerlist}
+	\item Participated as representative of the US-LHC Users Organization to visit Washington, DC to visit congressional offices and advocate for the continued funding of the particle physics community.
+	\item Communicated positive message of benefits to society resulting from fundamental research to congressional staff from a broad spectrum of backgrounds.
+    \end{innerlist}
+\item[] \textit{CERN Tour Guide} 
+    \hfill \textbf{Summer 2012} 
+    \begin{innerlist}
+	\item Lead tours through numerous CERN facilities to engage and educate the public.
+    \end{innerlist}
+\item[] \textit{Invited Research Fair Judge} 
+    \hfill \textbf{Summer 2012} 
+    \begin{innerlist}
+	\item Lindblom Technical School Science Fair Judge (Fall 2011) - Judged science fair for students in 6$^{th}$ through 9$^{th}$ grade at charter school on the south side of Chicago. 
+	\item Chicago Area Undergraduate Research Symposium Judge (Spring 2011) - Judged undergraduate research conference held at the Museum of Science and Industry on all science and engineering related projects.
+	\item St. Thomas the Apostle Science Fair Judge (Winter 2010) - Judged science fair for students in elementary and middle school at Catholic high school in Hyde Park.
+	\item Rye Elementary School Science Fair Judge (Winter 2007) - Judged science fair for students in elementary school in Rye, New Hampshire.
+    \end{innerlist}
+\item[] \textit{Community High School Tutor} 
+    \hfill \textbf{Sept. 2009 - June 2011} 
+    \begin{innerlist}
+	\item Served as tutor through the Calvert House Catholic Center at the University of Chicago working with students from local high schools in math and science.
+    \end{innerlist}
+\item[] \textit{Resident Assistant (The University of New Hampshire)}%
+    \hfill \textbf{Aug. 2006 - May 2008}
+    \begin{innerlist}
+        \item Oversaw community environment in university dormitory of 30 students.
+        \item Organized educational activities focused on academics, diversity, and spirituality as well as social activities to promote a healthy community environment within the dormitory.
+        \item Enforced university policy on part of the office of Residential Life.
+        \end{innerlist}
+\item[] \textit{SHARPP Advocate (The University of New Hampshire)}%
+    \hfill \textbf{Sep. 2008 - May 2009 }
+    \begin{innerlist}
+        \item Counselled victims of sexual harassment in the university community on behalf of Sexual Harassment and Rape Prevention Program.
+    \end{innerlist}
+\item[] \textit{Academic Student Liaison}%
+    \hfill \textbf{Sep. 2007 - May 2009 }
+    \begin{innerlist}
+        \item Acted as student liaison between the university honors program and the College of Engineering and Physical Sciences.
+        \item Represented student perspective for visitors of the university interested in programs involving both of these departments.
+    \end{innerlist}
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Supervised Students}
+\vspace*{-0.09in}
+\begin{itemize}
+\item[] \textit{Lorne Falconer} 
+    \hfill \textbf{May 2020 - September 2020} 
+    \begin{innerlist}
+	\item University of Exeter - B.Sc.
+	\item Topic of Study : Emulation of the FASER digitizer data acquisition system
+    \end{innerlist}
+
+\item[] \textit{Brian Stone} 
+    \hfill \textbf{September 2018 - Spring 2019} 
+    \begin{innerlist}
+	\item University of California at Berkeley - B.Sc.
+	\item Topic of Study : Exploration of Z'-2HDM dark matter model parameterization
+    \end{innerlist}
+    
+\item[] \textit{Sahil Patel} 
+    \hfill \textbf{September 2018 - Spring 2019} 
+    \begin{innerlist}
+	\item University of California at Berkeley - B.Sc.
+	\item Topic of Study : Ultra-low-mass dijet resonance searches using jet mass sculpting
+    \end{innerlist}
+    
+\item[] \textit{Tong Ou} 
+    \hfill \textbf{April 2017  - Spring 2019} 
+    \begin{innerlist}
+	\item Nanjing University - B.Sc.
+	\item Topic of Study : Search for high-mass top-anti-top-quark pair resonances
+    \end{innerlist}
+
+\item[] \textit{Gang Zhang} 
+    \hfill \textbf{September 2017 - Spring 2019} 
+    \begin{innerlist}
+	\item Tsinghua University - Ph.D. 
+	\item Topic of Study : Search for dijet resonance produced in association with a photon
+    \end{innerlist}
+
+\item[] \textit{Marijus Brazikus} 
+    \hfill \textbf{Summer 2017} 
+    \begin{innerlist}
+	\item California State at Fresno - M.Sc.
+	\item Topic of Study : Study of parton shower models via quark and gluon jet discrimination
+    \end{innerlist}
+
+\item[] \textit{Nikola Whallon} 
+    \hfill \textbf{August 2015 - August 2018} 
+    \begin{innerlist}
+	\item University of Washington - Ph.D. 
+	\item Topic of Study : Search for dark matter produced in association with a Higgs boson
+    \end{innerlist}
+
+\item[] \textit{Nihal Bahaa Anwer Razk} 
+    \hfill \textbf{January - June 2017} 
+    \begin{innerlist}
+	\item African Institute of Mathematical Sciences - M.Sc.
+	\item Topic of Study : Study of Monte Carlo simulation for jet physics at the LHC.
+    \end{innerlist}
+
+\item[] \textit{Khalid Omer Hassan} 
+    \hfill \textbf{January - June 2017} 
+    \begin{innerlist}
+	\item African Institute of Mathematical Sciences - M.Sc.
+	\item Topic of Study : Study of Monte Carlo simulation for jet physics at the LHC.
+    \end{innerlist}
+    
+\item[] \textit{Fiona Pons} 
+    \hfill \textbf{Summer 2016} 
+    \begin{innerlist}
+	\item California State at Fresno - B.Sc.
+	\item Topic of Study : Study of top quark jet mass reconstruction at the LHC
+    \end{innerlist}
+    
+\item[] \textit{Mazoza Ghneimat}
+    \hfill \textbf{Summer 2012} 
+    \begin{innerlist}
+	\item Palestine Polytechnic University - B.Sc.
+	\item Topic of Study : Calibration of the hadronic tile calorimeter of the ATLAS experiment
+    \end{innerlist}
+    
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Selected Publications}
+Large collaborations within particle physics (e.g. ATLAS) traditionally lists all members as authors in alphabetical order on every publication, resulting in me having more than 300 peer-reviewed publications.  I list here those which I consider most important and to which I have made significant contributions.
+\begin{itemize}
+
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2020-023/}{\textit{Luminosity determination for low-pileup datasets at $\sqrt{s}$=5 and 13 TeV using the ATLAS detector at the LHC}}, ATLAS-CONF-2020-023, July 2020.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2019-032/}{\textit{RECAST framework reinterpretation of an ATLAS Dark Matter Search constraining a model of a dark Higgs boson decaying to two b-quarks}}, ATL-PHYS-PUB-2019-032, August 2019. 
+
+\item \href{https://arxiv.org/abs/1908.02310}{\textit{Detecting and Studying High-Energy Collider Neutrinos with FASER at the LHC}}, arXiv:1908.02310, August 2019.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2018-051/}{\textit{Constraints on mediator-based dark matter models using $\sqrt{s}$=13 TeV pp collisions at the LHC with the ATLAS detector}}, ATLAS-CONF-2018-051, November 2018.
+
+\item \href{https://arxiv.org/abs/1808.07858}{\textit{Performance of top-quark and W-boson tagging with ATLAS in Run 2 of the LHC}}, Submitted to EPJC, August 2018.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2018-039/}{\textit{Search for Dark Matter Produced in Association with a Higgs Boson decaying to $b\bar{b}$ at $\sqrt{s}$=13 TeV with the ATLAS Detector using 79.8$fb^{-1}$ of proton-proton collision data}}, ATLAS-CONF-2018-039, July 2018.
+
+\item \href{https://arxiv.org/abs/1807.09477}{\textit{In situ calibration of large-$R$ jet energy and mass in 13 TeV proton-proton collisions with the ATLAS detector}}, Submitted to EPJC, July 2018.
+
+\item \href{https://arxiv.org/abs/1807.11471}{\textit{Search for dark matter in events with a hadronically decaying vector boson and missing transverse momentum in pp collisions at $\sqrt{s}$=13 TeV with the ATLAS detector}}, Submitted to JHEP, July 2018.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2017-020/}{\textit{Impact of Alternative Inputs and Grooming Methods on Large-R Jet Reconstruction in ATLAS}}, ATL-PHYS-PUB-2017-020, December 2017.
+
+\item \href{https://arxiv.org/abs/1711.11041}{\textit{Telescoping jet substructure}}, arXiv:1711.11041, Nov 2017.
+
+\item \href{https://arxiv.org/abs/1707.01302}{\textit{Search for Dark Matter Produced in Association with a Higgs Boson Decaying to $b\bar{b}$ using 36 $fb^{-1}$ of pp collisions at $\sqrt{s}=$13 TeV with the ATLAS Detector}}, Phys. Rev. Lett. 119 (2017) 181804, Nov 2017.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2017-064/}{\textit{Performance of Top Quark and W Boson Tagging in Run 2 with ATLAS}}, ATLAS-CONF-2017-064, July 2017.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2017-010/}{\textit{Variable Radius, Exclusive-$k_{T}$, and Center-of-Mass Subjet Reconstruction for Higgs($\rightarrow b\bar{b}$) Tagging in ATLAS}}, ATL-PHYS-PUB-2017-010, June 2017.
+
+\item \href{https://arxiv.org/abs/1608.02372}{\textit{Search for dark matter produced in association with a hadronically decaying vector boson in pp collisions at $\sqrt{s}$=13 TeV with the ATLAS detector}}, Phys. Lett. B 755 (2016) 285-305, Aug. 2016.
+
+\item \href{http://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2016-039/}{\textit{Boosted Higgs ($H\rightarrow b\bar{b}$) Boson Identification with the ATLAS Detector at $\sqrt{s}$=13 TeV}}, ATLAS-CONF-2016-039, Aug. 2016.
+
+\item \href{https://arxiv.org/abs/1606.04833}{\textit{Searches for heavy diboson resonances in pp collisions at $\sqrt{s}$=13 TeV with the ATLAS detector}}, CERN-EP-2016-106, June 2016.
+
+\item \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2015-068/}{\textit{Search for diboson resonances in the vvqq final state in pp collisions at $\sqrt{s}$=13 TeV with the ATLAS detector}}, ATLAS-CONF-2015-068, Dec. 2015.
+
+\item \href{https://arxiv.org/abs/1512.05099}{\textit{Combination of searches for WW, WZ, and ZZ resonances in pp collisions at $\sqrt{s}$=8 TeV with the ATLAS detector}}, Phys. Lett. B 755 (2016) 285-305, Dec. 2015.
+
+\item \href{https://arxiv.org/abs/1510.05821}{\textit{Identification of boosted, hadronically decaying W bosons and comparisons with ATLAS data taken at $\sqrt{s}$=8 TeV}}, Eur. Phys. J. C 76(3) (2016) 1-47, Oct. 2015.
+
+\item \href{http://arxiv.org/abs/1409.6190}{\textit{Search for resonant diboson production in the $\ell\ell qq$ final state in pp collisions at $\sqrt{s}$= 8~TeV with the ATLAS detector}}, EPJC (2015) 75:69, Feb. 2015.
+
+\item \href{http://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2014-004/}{\textit{Performance of Boosted W Boson Identification with the ATLAS Detector}}, ATLAS-PHYS-PUB-2014-004, March 2014.
+
+\item \href{https://cds.cern.ch/record/1493489}{\textit{Search for Resonant $ZZ$ Production in the $ZZ\rightarrow \ell\ell qq$ Channel with the ATLAS Detector Using 7.2 $fb^{-1}$ of $\sqrt{s} =$ 8~TeV pp Collision Data}}, ATLAS-CONF-2012-150, Nov. 2012
+
+\item \href{http://arxiv.org/abs/1409.6190}{\textit{Search for resonant diboson production in the $\ell\ell qq$ final state in pp collisions at $\sqrt{s} =$ 8~TeV with the ATLAS detector}}, Submitted to EPJC, September 2012.
+
+\item \href{http://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2014-004/}{\textit{Performance of Boosted W Boson Identification with the ATLAS Detector}}, ATLAS-PHYS-PUB-2014-004, March 2014.
+
+\item \href{https://cds.cern.ch/record/1493489}{\textit{Search for Resonant $ZZ$ Production in the $ZZ\rightarrow \ell\ell qq$ Channel with the ATLAS Detector Using 7.2 $fb^{-1}$ of $\sqrt{s} =$ 8~TeV pp Collision Data}}, ATLAS-CONF-2012-150, Nov. 2012
+
+\item \href{https://cds.cern.ch/record/1480628}{\textit{Search for single production of Vector-like Quarks coupling to light generations in $4.64fb^{-1}$ of ATLAS data at $\sqrt{s} = 7$ TeV}}, ATLAS-CONF-2012-137, Sept. 2012
+
+\item \href{http://arxiv.org/abs/1112.5755}{\textit{Search for heavy vector-like quarks coupling to light quarks in proton-proton collisions at $\sqrt{s}$ = 7 TeV with the ATLAS detector}}, PLB 712 (2012) 22.
+
+\item \href{http://www.actaphys.uj.edu.pl/fulltext?series=Sup&vol=4&page=13}{Considerations about Large Area–Low Cost Fast Imaging Photo-detectors}, Acta Phys.Polon.Supp. 4 (2011) 13-20.
+
+\item \href{https://cds.cern.ch/record/1235871}{Position Measurements with Micro-Channel Plates and Transmission lines using Pico-second Timing and Waveform Analysis}, CERN-2009-006.495, 2009.
+
+\item \href{http://scholars.unh.edu/inquiry_2009/12/}{\textit{Pure Science and So Much More: Particle Detector Development in France}}, \textit{Inquiry: Journal for Undergraduate Research},  University of New Hampshire, 2009.
+
+\end{itemize}
+
+
+
+
+
+\section{Selected Presentations}
+I list here my conference and seminar presentations.  If they exist, the written proceedings have been included.
+\begin{itemize}
+
+\item \href{https://indico.cern.ch/event/688109/}{\textit{FatJets and Machine Learning at ATLAS}}, University of Washington HEP Seminar, November 2017.
+
+\item \href{https://news.dartmouth.edu/events/event?event=47291#.WvCA_dOFPRY}{\textit{Dark Matter and the Higgs Boson : What more could you want?}}, Dartmouth College Cosmology Seminar, September 2017.
+
+\item \href{http://www.physicsandastronomy.pitt.edu/events/hep-seminar-samuel-meehan-university-washington}{\textit{Dark Matter and the Higgs Boson : What more could you want?}}, University of Pittsburgh HEP Seminar, September 2017.
+
+\item 
+\href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2017-010/}{\textit{Identification of Highly Boosted Higgs($\rightarrow b\bar{b}$) Jets at $\sqrt{s}=$13 TeV at ATLAS}}, BOOST Workshop, July 2017.
+
+\item \href{https://indico.cern.ch/event/489180/contributions/2158181/attachments/1270024/1881656/meehan_PHENO2016_201670510_new.pdf}{\textit{Searches for new resonances decaying into bosons with the ATLAS detector}}, Presented at the PHENO2016 Conference, May 2016
+
+\item \href{https://indico.cern.ch/event/279518/session/30/contribution/173/material/slides/0.pdf}{\textit{The upgrade of the ATLAS Tile Calorimeter readout electronics}}, Presented at the Large Hadron Collider Physics conference, June 2014
+
+\item \href{http://indico.cern.ch/conferenceDisplay.py?confId=198153}{\textit{Search for Resonant Diboson Production in the Semi-Hadronic Final State at ATLAS}}, Presented at the US LHC Users Organization group meeting, August 2013
+
+\item \href{http://www.epj-conferences.org/articles/epjconf/abs/2014/08/epjconf_icnfp2013_00086/epjconf_icnfp2013_00086.html}{\textit{Exotic Physics at ATLAS}}, Presented at International Conference for New Frontiers in Physics on behalf of the ATLAS Collaboration, August 2013
+
+\item \href{http://pos.sissa.it/archive/conferences/180/112/EPS-HEP\%202013_112.pdf}{\textit{Search for Resonant $ZZ$ Production in the $ZZ\rightarrow \ell\ell qq$ Channel with the ATLAS Detector Using 7.2 $fb^{-1}$ of $\sqrt{s} =$ 8~TeV pp Collision Data}}, Presented at European Physical Society Bi-Annual Meeting on behalf of the ATLAS Collaboration, July 2013
+
+\item \href{https://indico.cern.ch/event/234890/session/5/contribution/42/material/slides/0.pdf}{\textit{Search for Resonant ZZ/WZ Semileptonic Production with Jet Substructure}}, Presented at U.S. ATLAS Workshop, July 2013
+
+\item \href{https://indico.cern.ch/event/234890/session/3/contribution/73/material/slides/0.pdf}{\textit{Phase II Upgrades for the ATLAS Hadronic Tile Calorimeter}}, Presented at U.S. ATLAS Workshop, July 2013
+
+\item \href{https://cds.cern.ch/record/1493489}{\textit{Search for Resonant $ZZ$ Production in the $ZZ\rightarrow \ell\ell qq$ Channel with the ATLAS Detector Using 7.2 $fb^{-1}$ of $\sqrt{s} =$ 8~TeV pp Collision Data}}, Presented at American Physical Society Annual Meeting on behalf of the ATLAS Collaboration, Mar. 2013
+
+\item \href{http://iopscience.iop.org/1742-6596/452/1}{Search for single production of Vector-like Quarks coupling to light generations in $4.64fb^{-1}$ of ATLAS data at $\sqrt{s}$ = 7 TeV}, Presented at Top Physics Workshop on behalf of the ATLAS Collaboration, Sept. 2012
+
+\item \href{https://indico.cern.ch/event/129980/timetable/?view=standard#387-search-for-heavy-vector-li/}{\textit{Search for Heavy Vector-like Quarks at ATLAS in pp Collisions at $\sqrt{s}$=7 TeV}}, Presented at APS Division of Particles and Fields Conference on behalf of the ATLAS Collaboration, Aug. 2011
+
+\end{itemize}
+
+
+\section{Publications External to My Scientific Research}
+I list here the writings and presentations I have made that are external to my direct scientific work but which are oriented and support my professional goals and work.  A number of these are what in particle physics are referred to as ''Letter's of Interest" and written in the context of the ongoing \href{https://snowmass21.org/loi}{Snowmass Community Planning Process}.  They serve as focal/leading points around which longer term projects will be built.  Other contributions have resulted from individual instances surrounding other professional ventures.
+
+
+\begin{itemize}
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF4_CommF0-CompF0_CompF0_Samuel_Meehan-030.pdf}{\textit{Coherent Vision for Enabling Software Training in HEP}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CompF/SNOWMASS21-CompF0_CompF0-CommF3_CommF0_Samuel_Meehan-033.pdf}{\textit{Making the Most of Our (“Old”) Computing Resources}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF2_CommF3_Samuel_Meehan-031.pdf}{\textit{Creating a Research Internship Program to Increase the Number of Minorities in Particle Physics}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF3_CommF0-TF0_TF0-AF0_AF0_Samuel_Meehan-028.pdf}{\textit{Cultivating Math and Science in Africa}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF3_CommF6_Samuel_Meehan-074.pdf}{\textit{Accessibility in Particle Physics}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF3_CommF0_Samuel_Meehan-077.pdf}{\textit{Climate of the Field}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF3_CommF0_Samuel_Meehan-079.pdf}{\textit{Lifestyle and Personal Wellness}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF6_CommF3_Samuel_Meehan-081.pdf}{\textit{Resource Issues and Recommendations for Funding Agencies}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{https://www.snowmass21.org/docs/files/summaries/CommF/SNOWMASS21-CommF2_CommF3_Samuel_Meehan-076.pdf}{\textit{Building the Pipeline}}, Snowmass Letter of Interest, August 2020.
+
+\item \href{http://iopp.fileburst.com/ccr/archive/CERNCourier2018Oct-digitaledition.pdf}{\textit{Empowering Africa's Youth to Shape its Future}}, CERN Courier, Vol. 58, Number 8, 26-29, October 2018.
+
+\item \href{https://indico.cern.ch/event/724559/}{\textit{Finding the Next Einstein}}, University of Gottingen HEP Seminar, May 2018.
+\end{itemize}
+
+
+\end{document}
