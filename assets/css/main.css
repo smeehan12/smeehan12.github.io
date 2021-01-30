@@ -7208,7 +7208,7 @@ input, select, textarea {
 	}
 
 	.gallery article .image {
-		background-color: rgba(0, 0, 0, 0.125);
+		background-color: rgba(0, 0, 0, 0);
 	}
 
 /* Wrapper (style1) */
@@ -8607,12 +8607,14 @@ input, select, textarea {
 /* Added by Sam Meehan */
 
 /* for the summary element in details to remove the little triangle*/
+ 
 summary {
-  list-style-type: none; /* Firefox */
+  list-style-type: none;
 }
+ 
 
 summary::-webkit-details-marker {
-  display: none; /* Chrome */
+  display: none; 
 }
 
 
@@ -8675,4 +8677,132 @@ https://stackoverflow.com/questions/37178728/css-popup-jumps-back-to-top-of-page
 }
 
 
+/*
+http://jsfiddle.net/ZhLk4/1/
+*/
+div.item {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    display: inline-block;
+    /* To horizontally center images and caption */
+    text-align: center;
+    /* The width of the container also implies margin around the images. */
+    width: 120px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 50%;
+}
+.caption {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+}
 
+
+div.container3 {
+   height: 10em;
+   position: relative }              /* 1 */
+div.container3 p {
+   margin: 0;
+   position: absolute;               /* 2 */
+   top: 50%;                         /* 3 */
+   transform: translate(0, -50%) }   /* 4 */
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/  */
+.container {
+  display: flex;
+}
+.box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  border: none;  
+  outline: none; 
+}
+
+
+.box:first-child > span { margin-right: 10px; }
+
+.box:last-child  > span { margin-left: auto;  }
+
+/* non-essential  
+
+p {
+  text-align: center;
+  margin: 0 0 0 0;
+}
+*/
+
+img {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.crop {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 400px;
+    height: 300px;
+    margin: 0 0 0 0;
+}
+
+.centered-and-cropped { object-fit: cover }
+
+
+
+
+
+
+/* The Modal (background) 
+https://www.w3schools.com/howto/howto_css_modals.asp
+*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0%;
+  top: 0%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: all 0.3s;
+}
+
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  transition: all 0.3s;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
